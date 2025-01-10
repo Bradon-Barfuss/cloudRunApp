@@ -1,13 +1,12 @@
-from pydantic import BaseModel # Pydantic does data validation
-from typing import Optional
+from pydantic import BaseModel, Field
 
 
         
 class Drilling_Company(BaseModel):
-    Company_Name: str
-    Phone: str
-    Address_1: str
-    description: Optional[str] = None
+    Company_Name: str = Field(..., example="Example Drilling Co.")
+    Phone: str = Field(..., example="123-456-7890")
+    Address_1: str = Field(..., example="123 Example St.")
+    description: str = Field(..., example="A leading provider of drilling services.")
 
 class Show_Drilling_Company(BaseModel):
     Company_Name: str
@@ -24,6 +23,6 @@ class Operator(BaseModel):
     Email: str
 
 class User(BaseModel):
-    name: str
-    email: str
-    password: str
+    name: str = Field(..., example="John Doe")
+    email: str = Field(..., example="john.doe@example.com")
+    password: str = Field(..., example="securepassword")
