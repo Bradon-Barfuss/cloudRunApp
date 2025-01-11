@@ -9,7 +9,7 @@ import logging
 app = FastAPI(
     openapi_tags=[
         {
-            "name": "Drilling Companies",
+            "name": "DBradons awesome Drilling Companies",
             "description": "Operations related to drilling companies."
         },
         {
