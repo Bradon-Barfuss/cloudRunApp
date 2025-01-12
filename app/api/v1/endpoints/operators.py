@@ -10,12 +10,10 @@ from app.services.operators_service import (
     delete_operator
 )
 from typing import List
-import models  # Should be from app.models.operators import operator
-import schemas  # Should be from app.schemas.operator import OperatorCreate, OperatorUpdate, OperatorResponse
 
 router = APIRouter()
 
-@router.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.Operator, tags=["Operators"], summary="Create a new operator", description="Create a new operator with the provided details.")
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=OperatorResponse, tags=["Operators"], summary="Create a new operator", description="Create a new operator with the provided details.")
 def create_operator(operator: schemas.Operator, db: Session = Depends(get_db)):
     new_operator = models.Operator(First_Name=operator.First_Name, Last_Name=operator.Last_Name, Age=operator.Age, Email=operator.Email)
     db.add(new_operator)
