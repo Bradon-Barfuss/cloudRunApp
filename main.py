@@ -1,4 +1,5 @@
 # app/api/main.py
+import os
 from fastapi import FastAPI
 from app.api.v1.endpoints import drilling_companies, users, operators
 from app.dependencies.database import Base, engine
@@ -35,4 +36,5 @@ app.include_router(operators.router, prefix="/operators", tags=["Operators"])
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    port = int(os.getenv("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=port)

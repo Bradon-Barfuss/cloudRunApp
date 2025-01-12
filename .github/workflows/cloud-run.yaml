@@ -21,12 +21,12 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/cloudRunApp
+          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/cloudrunapp
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy fastapi-app \
-          --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/fastapi-app \
+          gcloud run deploy cloudrunapp \
+          --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/cloudrunapp \
           --platform managed \
           --region us-central1 \
           --allow-unauthenticated
