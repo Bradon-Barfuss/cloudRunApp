@@ -2,6 +2,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.dependencies.database import get_db
+from app.models.drilling_companies import DrillingCompany
+
 from app.services.drilling_companies_service import (
     create_drilling_company,
     get_all_drilling_companies,
