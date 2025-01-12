@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from app.dependencies.database import Base
+from app.api.dependencies.database import Base
 
 
 class DrillingCompany(Base):

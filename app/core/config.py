@@ -1,12 +1,11 @@
 # app/core/config.py
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     database_url: str
-    secret_key: str
-    access_token_expire_minutes: int
+    SECRET_KEY: str
+    ACCESS_TOKEN_EXPIRE_MINUTES: int
 
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(env_file='.env')
 
 settings = Settings()

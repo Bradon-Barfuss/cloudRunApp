@@ -1,8 +1,8 @@
 # app/api/main.py
 import os
 from fastapi import FastAPI
-from app.api.v1.endpoints import drilling_companies, users, operators
-from app.dependencies.database import Base, engine
+from app.api.v1.endpoints import drilling_company, operator, user
+from .dependencies.database import Base, engine
 
 
 # Create all database tables
@@ -30,6 +30,6 @@ app = FastAPI(
 )
 
 # Include routers
-app.include_router(drilling_companies.router, prefix="/drilling_companies", tags=["Drilling Companies"])
-app.include_router(users.router, prefix="/users", tags=["Users"])
-app.include_router(operators.router, prefix="/operators", tags=["Operators"])
+app.include_router(drilling_company.router, prefix="/drilling_companies", tags=["Drilling Companies"])
+app.include_router(user.router, prefix="/users", tags=["Users"])
+app.include_router(operator.router, prefix="/operators", tags=["Operators"])

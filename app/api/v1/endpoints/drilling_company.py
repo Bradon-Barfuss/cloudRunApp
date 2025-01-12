@@ -1,8 +1,8 @@
-# app/api/v1/endpoints/drilling_companies.py
+# app/api/v1/endpoints/drilling_company.py
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.dependencies.database import get_db
-from app.models.drilling_companies import DrillingCompany
+from app.api.dependencies.database import get_db
+from app.models.drilling_company import DrillingCompany
 
 from app.services.drilling_companies_service import (
     create_drilling_company,

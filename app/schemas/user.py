@@ -31,3 +31,10 @@ class UserResponse(UserBase):
 
     class Config:
         orm_mode = True
+
+class DeleteUser(BaseModel):
+    """
+    Schema for deleting a user.
+    """
+    id: int
+

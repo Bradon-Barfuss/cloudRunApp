@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from typing import Optional
 from app.core.config import settings
 from app.models.user import User
-from app.dependencies.database import get_db
+from app.api.dependencies.database import get_db
 
 # OAuth2 setup
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")

@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field, EmailStr
 from typing import Optional
 
+
 # ----- Operator Schemas -----
 class OperatorBase(BaseModel):
     """
@@ -33,4 +34,4 @@ class OperatorResponse(OperatorBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

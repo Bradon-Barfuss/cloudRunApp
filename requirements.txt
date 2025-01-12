@@ -2,6 +2,9 @@ fastapi
 uvicorn
 sqlalchemy
 pydantic
+pydantic[email]
+pydantic-settings
 python-dotenv
 passlib
 jose
+python-jose[cryptography]>=3.3.0
