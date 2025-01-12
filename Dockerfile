@@ -17,8 +17,5 @@ COPY . .
 # Expose the port FastAPI will run on
 EXPOSE 8080
 
-# Set PYTHONPATH to include the working directory
-ENV PYTHONPATH=/app
-
 # Command to run the application
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "app.api.main:app", "--host", "0.0.0.0", "--port", "8080"]
