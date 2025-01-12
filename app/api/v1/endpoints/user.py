@@ -10,8 +10,13 @@ from app.services.user_service import (
     update_user,
     delete_user
 )
+from typing import List
+import models
+import schemas
 
-@app.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.User, tags=["Users"], summary="Create a new user", description="Create a new user with the provided details.")
+router = APIRouter()
+
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.User, tags=["Users"], summary="Create a new user", description="Create a new user with the provided details.")
 def create_user(user: schemas.User, db: Session = Depends(get_db)):
     new_user = models.User(name=user.name, email=user.email, password=user.password)
     db.add(new_user)
@@ -19,18 +24,18 @@ def create_user(user: schemas.User, db: Session = Depends(get_db)):
     db.refresh(new_user)
     return new_user
 
-@app.get('/', status_code=status.HTTP_200_OK, response_model=List[schemas.User], tags=["Users"], summary="Get all users", description="Retrieve a list of all users.")
+@router.get('/', status_code=status.HTTP_200_OK, response_model=List[schemas.User], tags=["Users"], summary="Get all users", description="Retrieve a list of all users.")
 def get_all_users(db: Session = Depends(get_db)):
     return db.query(models.User).all()
 
-@app.get('/{id}', status_code=status.HTTP_200_OK, response_model=schemas.User, tags=["Users"], summary="Get a user by ID", description="Retrieve a user by their ID.")
+@router.get('/{id}', status_code=status.HTTP_200_OK, response_model=schemas.User, tags=["Users"], summary="Get a user by ID", description="Retrieve a user by their ID.")
 def get_user(id: int, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.id == id).first()
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"User with id {id} not found")
     return user
 
-@app.put('/{id}', status_code=status.HTTP_202_ACCEPTED, response_model=schemas.User, tags=["Users"], summary="Update a user", description="Update the details of a user by their ID.")
+@router.put('/{id}', status_code=status.HTTP_202_ACCEPTED, response_model=schemas.User, tags=["Users"], summary="Update a user", description="Update the details of a user by their ID.")
 def update_user(id: int, user: schemas.User, db: Session = Depends(get_db)):
     db_user = db.query(models.User).filter(models.User.id == id).first()
     if not db_user:
@@ -44,7 +49,7 @@ def update_user(id: int, user: schemas.User, db: Session = Depends(get_db)):
     db.refresh(db_user)
     return db_user
 
-@app.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT, tags=["Users"], summary="Delete a user", description="Delete a user by their ID.")
+@router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT, tags=["Users"], summary="Delete a user", description="Delete a user by their ID.")
 def delete_user(id: int, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.id == id).first()
     if not user:

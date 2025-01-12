@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String
-from .database import Base
+from app.dependencies.database import Base
 
 
-class drilling_company(Base):
+class DrillingCompany(Base):
     __tablename__ = 'drilling_companies'
     Company_ID = Column(Integer, primary_key=True, index=True)
     Company_Name = Column(String)

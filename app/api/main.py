@@ -31,3 +31,8 @@ app = FastAPI(
 app.include_router(drilling_companies.router, prefix="/drilling_companies", tags=["Drilling Companies"])
 app.include_router(users.router, prefix="/users", tags=["Users"])
 app.include_router(operators.router, prefix="/operators", tags=["Operators"])
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8080)

@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, String
 from .database import Base
 
-class operator(Base):
+class Operator(Base):
     __tablename__ = 'operators'
-    operator_ID = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
 
     First_Name = Column(String)
     Last_Name = Column(String)
