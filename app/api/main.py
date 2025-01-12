@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from app.api.v1.endpoints import drilling_companies, users, operators
 from app.dependencies.database import Base, engine
 
+
 # Create all database tables
 Base.metadata.create_all(bind=engine)
 

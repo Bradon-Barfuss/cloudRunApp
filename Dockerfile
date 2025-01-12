@@ -3,6 +3,7 @@ FROM python:3.9-slim
 
 # Set the working directory
 WORKDIR /app
+COPY . /app
 
 # Copy the requirements file
 COPY requirements.txt requirements.txt
@@ -17,4 +18,8 @@ COPY . .
 EXPOSE 8080
 
 # Command to run the application
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "app.api.main:app", "--host", "0.0.0.0", "--port", "8080"]
+
+
+
+
