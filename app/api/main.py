@@ -10,7 +10,7 @@ Base.metadata.create_all(bind=engine)
 
 # Initialize FastAPI app
 app = FastAPI(
-    title="Bradons Super Cool Awesome API Showing my beautiful mom",
+    title="Bradons Super Cool Awesome API Showing my beautiful mom and sister",
     description="API for managing drilling companies, users, and operators.",
     version="1.0.0",
     openapi_tags=[
